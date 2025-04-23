@@ -1,3 +1,4 @@
+// Varre uma area de raio determinado, em busca de obstaculos
 public class RoboAereoObservador extends RoboAereo {
     private int raioObservacao;
 

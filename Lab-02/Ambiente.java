@@ -1,5 +1,4 @@
 import java.util.ArrayList;
-import java.awt.Point;
 
 public class Ambiente {
     private int largura;
@@ -7,7 +6,7 @@ public class Ambiente {
     private int profundidade;
 
     private ArrayList<Robo> robosAtivos;
-    private ArrayList<Point> obstaculos;
+    private ArrayList<Obstaculo> obstaculos;
 
     public Ambiente(int largura, int altura, int profundidade){
         this.largura = largura;
@@ -21,16 +20,8 @@ public class Ambiente {
         robosAtivos.add(r);
     }
 
-    public void adicionarObstaculo(int x, int y) { // Adiciona um obstaculo em um ponto
-        obstaculos.add(new Point(x, y));
-    }
-
-    public void removerObstaculo(int x, int y) {
-        obstaculos.remove(new Point(x, y));
-    }    
-
-    public boolean temObstaculoEm(int x, int y) { // Retorna se ha um obstaculo em um certo ponto
-        return obstaculos.contains(new Point(x, y));
+    public void removerRobo(Robo r) { // Remove um robo
+        robosAtivos.remove(r);
     }
 
     public boolean dentroDosLimites(int x, int y) {
@@ -41,6 +32,67 @@ public class Ambiente {
         return (x>=0 && x<=this.largura && y>=0 && y<=this.altura && z >= 0 && z <= this.profundidade);
     }
 
+    public void adicionarObstaculo(Obstaculo obstaculo) {
+        this.obstaculos.add(obstaculo);
+    }
+
+    public void removerObstaculo(Obstaculo obstaculo) {
+        this.obstaculos.remove(obstaculo);
+    }
+
+    public void removerObstaculoEm(int x, int y) {
+        for (Obstaculo obs : obstaculos) {
+            int x1 = obs.getPosicaoX1();
+            int x2 = obs.getPosicaoX2();
+            int y1 = obs.getPosicaoY1();
+            int y2 = obs.getPosicaoY2();
+    
+            if (x >= x1 && x <= x2 && y >= y1 && y <= y2) {
+                obstaculos.remove(obs);
+                System.out.println("Obstáculo removido na posição (" + x + ", " + y + ")");
+                return;
+            }
+        }
+    }
+    
+
+
+    public boolean temObstaculoEm(int x, int y) {
+        for (Obstaculo obs : obstaculos) {
+            int x1 = obs.getPosicaoX1();
+            int y1 = obs.getPosicaoY1();
+            int x2 = obs.getPosicaoX2();
+            int y2 = obs.getPosicaoY2();
+    
+            // verifica se (x,y) está dentro do retângulo do obstáculo
+            if (x >= x1 && x <= x2 && y >= y1 && y <= y2) {
+                return true;
+            }
+        }
+        return false;
+    }
+    
+
+    public void detectarColisoes() {
+        for (Robo robo : robosAtivos) {
+            int x = robo.getPosX();
+            int y = robo.getPosY();
+    
+            for (Obstaculo obs : obstaculos) {
+                int x1 = obs.getPosicaoX1();
+                int y1 = obs.getPosicaoY1();
+                int x2 = obs.getPosicaoX2();
+                int y2 = obs.getPosicaoY2();
+    
+                if (x >= x1 && x <= x2 && y >= y1 && y <= y2) {
+                    System.out.println("Colisão detectada: Robô " + robo.getNome()
+                            + " está sobre o obstáculo " + obs.getTipo() + " em (" + x + "," + y + ")");
+                }
+            }
+        }
+    }
+    
+
     public int getLargura() {
         return largura;
     }
@@ -48,7 +100,18 @@ public class Ambiente {
     public int getAltura() {
         return altura;
     }
+
+    public int getProfundidade() {
+        return profundidade;
+    }
+
+    public ArrayList<Robo> getRobosAtivos() {
+        return robosAtivos;
+    }
     
+    public ArrayList<Obstaculo> getObstaculos(){
+        return obstaculos;
+    }
 }
 
 

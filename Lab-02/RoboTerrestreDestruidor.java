@@ -13,19 +13,19 @@ public class RoboTerrestreDestruidor extends RoboTerrestre {
                 
         if (ambiente.temObstaculoEm(x + 1, y)) {
             System.out.println("Obstáculo à direita. Destruindo com forca " + forcaDestruicao);
-            ambiente.removerObstaculo(x + 1, y);
+            ambiente.removerObstaculoEm(x + 1, y);
 
         } else if (ambiente.temObstaculoEm(x - 1, y)) {
             System.out.println("Obstáculo à esquerda. Destruindo com forca " + forcaDestruicao);
-            ambiente.removerObstaculo(x - 1, y);
+            ambiente.removerObstaculoEm(x - 1, y);
 
         } else if (ambiente.temObstaculoEm(x, y + 1)) {
             System.out.println("Obstáculo acima. Destruindo com forca " + forcaDestruicao);
-            ambiente.removerObstaculo(x, y + 1);
+            ambiente.removerObstaculoEm(x, y + 1);
 
         } else if (ambiente.temObstaculoEm(x, y - 1)) {
             System.out.println("Obstáculo abaixo. Destruindo com forca " + forcaDestruicao);
-            ambiente.removerObstaculo(x, y - 1);
+            ambiente.removerObstaculoEm(x, y - 1);
 
         } else {
             System.out.println("Nenhum obstáculo ao redor para destruir.");

@@ -29,4 +29,8 @@ public class RoboAereo extends Robo{
     public void exibirPosicaoAereo(){
         System.out.println("Posição: X = " + getPosX() + ", Y = " + getPosY() + ", Z = " + this.altitude);
     }
+
+    public int getAltitude() {
+        return this.altitude;
+    }    
 }
