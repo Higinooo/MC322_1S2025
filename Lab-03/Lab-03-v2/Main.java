@@ -137,7 +137,7 @@ public class Main {
                     Robo es = ambiente.getRobosAtivos().get(e - 1);
 
                     if (es instanceof RoboTerrestreDestruidor){
-                        System.out.println("Metodos especificos:\n 1 - DestruirObstaculo (descricao breve) ");
+                        System.out.println("Metodos especificos:\n 1 - DestruirObstaculo (destroi um obstaculo ao redor do robo) ");
                         System.out.print("Escolha o numero do metodo: ");
                         int num = scanner.nextInt();
                         if (num == 1){
@@ -146,7 +146,7 @@ public class Main {
                     }
 
                     else if (es instanceof RoboTerrestreExplorador){
-                    System.out.println("Metodos especificos:\n 1 - Explorar (descricao breve) ");
+                    System.out.println("Metodos especificos:\n 1 - Explorar (robo avança em linha reta até encontrar um obstáculo ou chegar ao fim do ambiente) ");
                         System.out.print("Escolha o numero do metodo: ");
                         int num = scanner.nextInt();
                         if (num == 1){
@@ -155,7 +155,7 @@ public class Main {
                     }
 
                     else if (es instanceof RoboAereoFalcao){
-                        System.out.println("Metodos especificos:\n 1 - Visao (descricao breve) ");
+                        System.out.println("Metodos especificos:\n 1 - Visao (Varre o ambiente na direção atual até um certo alcance visual, detectando obstáculos à frente) ");
                         System.out.print("Escolha o numero do metodo: ");
                         int num = scanner.nextInt();
                         if (num == 1){
@@ -164,7 +164,7 @@ public class Main {
                     }
 
                     else if (es instanceof RoboAereoObservador){
-                        System.out.println("Metodos especificos:\n 1 - Observar (descricao breve) ");
+                        System.out.println("Metodos especificos:\n 1 - Observar (Varre uma area de raio determinado, em busca de obstaculos) ");
                         System.out.print("Escolha o numero do metodo: ");
                         int num = scanner.nextInt();
                         if (num == 1){
